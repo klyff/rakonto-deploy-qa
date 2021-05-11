@@ -1,0 +1,30 @@
+version: '3.1'
+
+services:
+  mysql:
+    image: mysql:8
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_DATABASE=rakonto
+      - MYSQL_USER=rakonto
+      - MYSQL_PASSWORD=rakonto
+      - MYSQL_ROOT_PASSWORD=root
+      - TZ=UTC
+    volumes:
+      - ~/rakonto-data/docker/mysql:/var/lib/mysql
+
+  adminer:
+    image: adminer:4
+    restart: always
+    links:
+      - mysql:db
+    ports:
+      - 9000:8080
+
+  rakonto:
+    build: .
+    ports:
+      - 8080:8080
+    depends_on:
+      - mysql
