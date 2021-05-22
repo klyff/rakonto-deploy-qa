@@ -1,2 +1,4 @@
 rakonto-ui/
 rakonto-backend/
+docker/
+docker-compose.yml
