@@ -16,6 +16,8 @@ cat <<EOT >> docker-compose.yml
     build: .
     ports:
       - 8080:8080
+    volumes:
+      - ~/rakonto-data/docker/binary:/app/uploads
     depends_on:
       - mysql
       - rabbitmq
