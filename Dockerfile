@@ -1,7 +1,8 @@
 FROM node:16-alpine as ui
 WORKDIR /app
-COPY rakonto-ui .
-RUN yarn install && yarn build
+COPY rakonto-ui/build ./build
+#COPY rakonto-ui .
+#RUN yarn install && yarn build
 
 FROM openjdk:14-jdk-slim as backend
 WORKDIR /app
