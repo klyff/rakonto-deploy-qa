@@ -2,6 +2,7 @@
 
 git clone git@github.com:klyff/rakonto-backend.git 2> /dev/null || (cd rakonto-backend ; git pull)
 git clone git@github.com:klyff/rakonto-ui.git 2> /dev/null || (cd rakonto-ui ; git pull)
+git clone  git@github.com:klyff/rakonto-ui.git --branch v2/main rakonto-front 2> /dev/null || (cd rakonto-front ; git pull)
 
 if [[ ! -z $DROP_DATA ]]; then
   echo removing ~/docker-data

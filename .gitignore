@@ -2,3 +2,5 @@ rakonto-ui/
 rakonto-backend/
 docker/
 docker-compose.yml
+.DS_Store
+.idea
