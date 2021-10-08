@@ -2,7 +2,7 @@
 
 git clone git@github.com:klyff/rakonto-backend.git 2> /dev/null || (cd rakonto-backend ; git pull)
 git clone git@github.com:klyff/rakonto-ui.git 2> /dev/null || (cd rakonto-ui ; git pull)
-git clone  git@github.com:klyff/rakonto-ui.git --branch v2/main rakonto-front 2> /dev/null || (cd rakonto-front ; git pull)
+git clone git@github.com:klyff/rakonto-front.git 2> /dev/null || (cd rakonto-front ; git pull)
 
 if [[ ! -z $DROP_DATA ]]; then
   echo removing ~/docker-data
@@ -22,6 +22,15 @@ cat <<EOT >> docker-compose.yml
     depends_on:
       - mysql
       - rabbitmq
+  rakonto-ui:
+    build:
+      context: .
+      dockerfile: UI-Dockerfile
+    ports:
+      - 3000:3000
+    depends_on:
+      - rakonto
+
 EOT
 
 docker rmi --force $(docker images 'rakonto-deploy-qa_rakonto' -a -q) 2> /dev/null
