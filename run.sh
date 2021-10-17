@@ -27,7 +27,7 @@ cat <<EOT >> docker-compose.yml
       context: .
       dockerfile: UI-Dockerfile
     ports:
-      - 3000:3000
+      - 80:80
     depends_on:
       - rakonto
 
