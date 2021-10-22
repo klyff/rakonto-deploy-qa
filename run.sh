@@ -1,5 +1,7 @@
 #!/bin/sh
 
+ENV="${ENV:-qa}"
+
 git clone git@github.com:klyff/rakonto-backend.git 2> /dev/null || (cd rakonto-backend ; git pull)
 git clone git@github.com:klyff/rakonto-ui.git 2> /dev/null || (cd rakonto-ui ; git pull)
 git clone git@github.com:klyff/rakonto-front.git 2> /dev/null || (cd rakonto-front ; git pull)
@@ -22,6 +24,8 @@ cat <<EOT >> docker-compose.yml
     depends_on:
       - mysql
       - rabbitmq
+    environment:
+      ENV: ${ENV}
   rakonto-ui:
     build:
       context: .

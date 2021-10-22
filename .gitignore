@@ -1,5 +1,6 @@
 rakonto-ui/
 rakonto-backend/
+rakonto-front/
 docker/
 docker-compose.yml
 .DS_Store

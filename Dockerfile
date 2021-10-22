@@ -16,5 +16,5 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y --no-install-recommends ffmpeg imagemagick
 COPY --from=backend /app/build/libs/*.jar ./app.jar
 EXPOSE 8080
-ENV ENV=qa
-CMD [ "sh", "-c", "java -jar -Dspring.profiles.active=qa app.jar" ]
+ENV ENV=${ENV}
+CMD [ "sh", "-c", "java -jar -Dspring.profiles.active=${ENV} app.jar" ]
