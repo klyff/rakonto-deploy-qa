@@ -1,0 +1,25 @@
+version: "3.1"
+
+services:
+  backend:
+    build:
+      context: ../
+      dockerfile: Dockerfile-Backend
+    ports:
+      - 8080:8080
+    volumes:
+      - ~/rakonto-data/docker/binary:/app/uploads
+    depends_on:
+      - mysql
+      - rabbitmq
+    environment:
+      ENV: ${ENV:-qa}
+
+  frontend:
+    build:
+      context: ../
+      dockerfile: Dockerfile-Frontend
+    ports:
+      - 4000:4000
+    environment:
+      ENV: ${ENV:-qa}
