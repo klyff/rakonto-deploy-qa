@@ -21,5 +21,7 @@ services:
       dockerfile: Dockerfile-Frontend
     ports:
       - 4000:4000
+    depends_on:
+      - backend
     environment:
       ENV: ${ENV:-qa}
