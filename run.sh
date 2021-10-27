@@ -10,4 +10,4 @@ fi
 
 docker-compose -f ./rakonto-backend/docker-compose.yml -f ./docker-compose.yml build backend
 docker-compose -f ./rakonto-backend/docker-compose.yml -f ./docker-compose.yml build frontend
-docker-compose -d -f ./rakonto-backend/docker-compose.yml -f ./docker-compose.yml up --remove-orphans
+docker-compose -f ./rakonto-backend/docker-compose.yml -f ./docker-compose.yml up -d --remove-orphans
