@@ -8,6 +8,8 @@ if [[ ! -z $DROP_DATA ]]; then
   rm -fr ~/rakonto-data
 fi
 
+sudo chown -R 1000:1000 ~/rakonto-data/docker/elasticsearch
+
 docker-compose -f ./rakonto-backend/docker-compose.yml -f ./docker-compose.yml build backend
 docker-compose -f ./rakonto-backend/docker-compose.yml -f ./docker-compose.yml build frontend
 docker-compose -f ./rakonto-backend/docker-compose.yml -f ./docker-compose.yml up -d --remove-orphans
