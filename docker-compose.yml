@@ -12,6 +12,8 @@ services:
     depends_on:
       - mysql
       - rabbitmq
+      - redis
+      - elasticsearch
     environment:
       ENV: ${ENV:-qa}
 
