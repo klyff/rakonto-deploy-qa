@@ -5,7 +5,11 @@ git clone git@github.com:klyff/rakonto-ui.git 2> /dev/null || (cd rakonto-ui ; g
 
 docker container kill $(docker ps -q) 2> /dev/null
 
-sudo chown -R 1000:1000 ~/rakonto-data/docker/elasticsearch
+case $(uname | tr '[:upper:]' '[:lower:]') in
+  linux*)
+    sudo chown -R 1000:1000 ~/rakonto-data/docker/elasticsearch
+    ;;
+esac
 
 docker-compose -f ./rakonto-backend/docker-compose.yml -f ./docker-compose.yml build backend
 docker-compose -f ./rakonto-backend/docker-compose.yml -f ./docker-compose.yml build frontend
