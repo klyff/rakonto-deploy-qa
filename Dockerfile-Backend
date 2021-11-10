@@ -7,4 +7,4 @@ FROM openjdk:14-jdk-slim
 WORKDIR /app
 COPY --from=builder /app/build/libs/webapp-0.0.1.jar ./webapp-0.0.1.jar
 EXPOSE 8080
-CMD [ "sh", "-c", "java -jar -Dspring.profiles.active=${ENV} webapp-0.0.1.jar" ]
+CMD [ "sh", "-c", "java -jar -Dagentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=6666 -Dspring.profiles.active=${ENV} webapp-0.0.1.jar" ]
