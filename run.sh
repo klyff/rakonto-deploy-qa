@@ -10,6 +10,7 @@ case $(uname | tr '[:upper:]' '[:lower:]') in
     ;;
 esac
 
+docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
 docker container kill $(docker ps -q) 2> /dev/null
 docker-compose -f ./rakonto-backend/docker-compose.yml -f ./docker-compose.yml build backend
 docker-compose -f ./rakonto-backend/docker-compose.yml -f ./docker-compose.yml build frontend
