@@ -12,7 +12,6 @@ services:
       - mysql
       - rabbitmq
       - redis
-      - elasticsearch
       - minio
     environment:
       ENV: ${ENV:-qa}
